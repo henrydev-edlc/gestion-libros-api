@@ -1,4 +1,4 @@
-package com.biblioteca.controller;
+package com.biblioteca.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
