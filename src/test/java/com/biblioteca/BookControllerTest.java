@@ -8,22 +8,31 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageRequest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@SpringBootTest // Esto le dice a Java que es una prueba de Spring
+@SpringBootTest
 class BookControllerTest {
 
     @Autowired
     private BookController controller;
 
-    @MockBean // Crea un "simulador" del servicio para que el controlador no de error
+    @MockBean
     private BookService bookService;
 
     @Test
-    void testTituloSoloNumerosLanzaException() {
-        // Tu lógica era correcta, solo faltaba el entorno de Spring
+    void testTituloNoValido() {
+        // Si el usuario ingresa "12345" manda un mensaje de error
         assertThrows(IllegalArgumentException.class, () -> {
-            controller.searchByTitle("123", PageRequest.of(0, 10));
+            controller.searchByTitle("12345", PageRequest.of(0, 10));
+        });
+    }
+
+    @Test
+    void testTituloValido(){
+        // valida que un titulo normal pase sin problemas
+        assertDoesNotThrow(() -> {
+            controller.searchByTitle("Cien años de soledad", PageRequest.of(0, 10));
         });
     }
 }
