@@ -68,4 +68,14 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleAllExceptions(Exception ex) {
+        Map<String, String> errors = new HashMap<>();
+
+        // Alerta cuando el servidor reciba caracteres extraños
+        errors.put("error", "La solicitud contiene caracteres no permitidos o un formato inválido");
+
+        return ResponseEntity.badRequest().body(errors);
+    }
+
 }
