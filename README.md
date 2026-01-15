@@ -17,7 +17,7 @@ Puedes encontrar la imagen lista para producción aquí:
 * **Búsqueda Flexible**: Filtros de búsqueda por título y autor con manejo de errores personalizado.
 * **Infraestructura Moderna**: Orquestación completa con Docker y Docker Compose.
 * **Documentación**: Swagger UI integrado para pruebas rápidas de los endpoints.
-* **Calidad**: Suite de pruebas unitarias con JUnit 5.
+* **Calidad**: Suite de pruebas unitarias.
 
 ## 🛠️ Instalación y Despliegue
 
