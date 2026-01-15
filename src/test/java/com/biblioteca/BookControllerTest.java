@@ -30,9 +30,9 @@ class BookControllerTest {
 
     @Test
     void testTituloValido(){
-        // valida que un titulo normal pase sin problemas
+        // valida que un titulo con guion normal pase sin problemas
         assertDoesNotThrow(() -> {
-            controller.searchByTitle("Cien años de soledad", PageRequest.of(0, 10));
+            controller.searchByTitle("Frankenstein-Edicion-Moderna", PageRequest.of(0, 10));
         });
     }
 }

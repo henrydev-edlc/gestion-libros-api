@@ -60,25 +60,27 @@ public class BookController {
 
     @GetMapping("/search/author")
     public Page<Book> searchByAuthor(
-        @RequestParam
-        @Pattern(
-                regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$",
-                message = "El autor solo acepta texto, no se permiten números ni símbolos"
-        )
-        String author,
-        Pageable pageable
+            @RequestParam
+            @Pattern(
+                    regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$",
+                    message = "El autor solo acepta letras, espacios y guiones medios"
+            )
+            String author,
+            Pageable pageable
     ){
         return bookService.search(author, pageable);
     }
 
     @GetMapping("/search/title")
     public Page<Book> searchByTitle(
-            @RequestParam String title,
+            @RequestParam
+            @Pattern(regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$", message = "Título inválido")
+            String title,
             Pageable pageable
     ){
-        // si el titulo  es solo numeros
+
         if(title.matches("^\\d+$")){
-            throw new IllegalArgumentException("El título debe contener texto y no puede estar compuesto únicamente por números.");
+            throw new IllegalArgumentException("El título no puede estar compuesto únicamente por números.");
         }
         return bookService.search(title, pageable);
     }
