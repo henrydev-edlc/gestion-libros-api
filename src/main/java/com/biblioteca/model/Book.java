@@ -16,7 +16,7 @@ public class Book {
     // No vacío, solo letras y espacios
     @NotBlank(message = "El título es obligatorio")
     @Pattern(
-            regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$",
+            regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$",
             message = "El titulo solo debe contener letras y espacios"
     )
     private String title;
@@ -24,7 +24,7 @@ public class Book {
 
     @NotBlank(message = "El autor es obligatorio")
     @Pattern(
-            regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ ]+$",
+            regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$",
             message = "El autor solo debe contener letras y espacios"
     )
     private String author;
