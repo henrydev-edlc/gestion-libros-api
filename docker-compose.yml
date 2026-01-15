@@ -10,9 +10,10 @@ services:
       MYSQL_PASSWORD: "123456"
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   app:
-    # 1. Cambiamos a la imagen pública de Docker Hub
     image: henrydev2026/biblioteca-api:latest
     container_name: spring-app
     depends_on:
@@ -20,8 +21,9 @@ services:
     ports:
       - "8080:8080"
     environment:
-      # El host "db" coincide con el nombre del servicio arriba
       - DB_URL=jdbc:mysql://db:3306/biblioteca_db
-      # 2. Usamos DB_USERNAME para que coincida con tus logs previos
       - DB_USERNAME=userdev
       - DB_PASSWORD=123456
+
+volumes:
+  mysql_data:
