@@ -26,7 +26,7 @@ La imagen está publicada y lista para ser utilizada en entornos de prueba o pro
 * Docker y Docker Compose instalados.
 
 ### Despliegue rápido con Docker Compose
-El archivo `docker-compose.yml` orquestra automáticamente la API y la base de datos MySQL.
+El archivo `docker-compose.yml` administra automáticamente la API y la base de datos MySQL.
 
 1.  Copia tu archivo `docker-compose.yml` en una carpeta local.
 2.  Ejecuta el siguiente comando en la terminal:
