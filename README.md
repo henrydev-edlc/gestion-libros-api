@@ -14,7 +14,7 @@ La imagen está publicada y lista para ser utilizada:
 ## 🚀 Características Principales (v2.0)
 
 * **Búsqueda Unificada**: Endpoint global `/api/books/search` que filtra simultáneamente por título o autor.
-* **Validaciones Inteligentes**: 
+* **Validaciones Avanzadas**: 
     * Permite títulos técnicos con números y puntos (ej. *Spring Boot v3.0*).
     * Bloquea búsquedas compuestas únicamente por números.
 * **Persistencia de Datos**: Uso de volúmenes de Docker para asegurar que la base de datos MySQL conserve la información tras reinicios.
