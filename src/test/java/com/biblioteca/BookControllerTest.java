@@ -21,18 +21,26 @@ class BookControllerTest {
     private BookService bookService;
 
     @Test
-    void testTituloNoValido() {
-        // Si el usuario ingresa "12345" manda un mensaje de error
+    void testBusquedaSoloNumerosNoValida() {
+        // Debe fallar si el usuario solo ingresa números
         assertThrows(IllegalArgumentException.class, () -> {
-            controller.searchByTitle("12345", PageRequest.of(0, 10));
+            controller.search("2026", PageRequest.of(0, 10));
         });
     }
 
     @Test
-    void testTituloValido(){
-        // valida que un titulo con guion normal pase sin problemas
+    void testBusquedaConVersionValida(){
+        // Valida que acepte títulos con puntos y versiones (la nueva mejora)
         assertDoesNotThrow(() -> {
-            controller.searchByTitle("Frankenstein-Edicion-Moderna", PageRequest.of(0, 10));
+            controller.search("Spring-Boot-v3.0", PageRequest.of(0, 10));
+        });
+    }
+
+    @Test
+    void testBusquedaTextoNormalValida(){
+        // Valida que una búsqueda normal de autor o título pase sin problemas
+        assertDoesNotThrow(() -> {
+            controller.search("Gabriel Garcia Marquez", PageRequest.of(0, 10));
         });
     }
 }
