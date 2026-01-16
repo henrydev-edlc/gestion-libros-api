@@ -100,36 +100,24 @@ public class BookController {
         return ResponseEntity.ok(response);
     }
 
-    // SEARCH AUTHOR /api/books/ -> Buscar por autor
-    @Operation(summary = "Buscar libro por autor")
-    @GetMapping("/search/author")
-    public Page<Book> searchByAuthor(
+    // SEARCH /api/books/search?query={término}
+    @Operation(summary = "Búsqueda global por título o autor")
+    @GetMapping("/search")
+    public Page<Book> search(
             @RequestParam
             @Pattern(
-                    regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ -]+$",
-                    message = "El autor solo acepta letras, espacios y guiones medios"
+                    regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 \\-.:]+$",
+                    message = "La búsqueda contiene caracteres no permitidos"
             )
-            String author,
+            String query,
             @ParameterObject Pageable pageable
     ){
-        return bookService.search(author, pageable);
-    }
-
-    // SEARCH TITLE /api/books/ -> Buscar por titulo
-    @Operation(summary = "Buscar libro por titulo")
-    @GetMapping("/search/title")
-    public Page<Book> searchByTitle(
-            @RequestParam
-            @Pattern(regexp = "^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9 \\-.:]+$",
-                     message = "El título debe contener letras y puede incluir números, espacios o guiones.")
-            String title,
-            @ParameterObject Pageable pageable
-    ){
-        // validacion extra, que el titulo no puede ser solo numeros
-        if(title.matches("^\\d+$")){
-            throw new IllegalArgumentException("El título no puede estar compuesto únicamente por números.");
+        // No permitir que la búsqueda sea solo números
+        if(query.matches("^\\d+$")){
+            throw new IllegalArgumentException("El término de búsqueda no puede ser solo números.");
         }
-        return bookService.search(title, pageable);
+
+        return bookService.search(query, pageable);
     }
 
 }
