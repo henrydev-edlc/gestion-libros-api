@@ -63,7 +63,7 @@ public class BookController {
         Book savedBook = bookService.save(book);
 
         Map<String, Object> response = new HashMap<>();
-        response.put("mensaje", "Operacion Exitosa: El libro con ID " + savedBook.getId() + " se creo correctamente");
+        response.put("mensaje", "Operacion Exitosa: El libro se creo correctamente");
         response.put("libro", savedBook);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
