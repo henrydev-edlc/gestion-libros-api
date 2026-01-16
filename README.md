@@ -25,11 +25,10 @@ La imagen está publicada y lista para ser utilizada:
 ### Requisitos previos
 * Docker y Docker Compose instalados.
 
-### Despliegue rápido
+### Pasos para el despliegue
 El archivo `docker-compose.yml` gestiona automáticamente la configuración de la red, la base de datos y la aplicación.
 
-1.  Copia tu archivo `docker-compose.yml` en una carpeta local.
-2.  Ejecuta el siguiente comando en la terminal:
-
-```bash
-sudo docker-compose up -d
+1. **Preparación**: Copia tu archivo `docker-compose.yml` en una carpeta local.
+2. **Ejecución**: Ejecuta el siguiente comando en la terminal:
+   ```bash
+   sudo docker-compose up -d
