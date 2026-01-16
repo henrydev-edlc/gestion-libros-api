@@ -5,26 +5,31 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Docker](https://img.shields.io/badge/Docker-Published-blue)
 
-Una API REST robusta construida con Spring Boot para la gestión de inventario de una biblioteca. Este proyecto implementa validaciones estrictas, sigue estándares profesionales y está listo para desplegarse mediante contenedores.
+Una API REST profesional construida con **Spring Boot** para la gestión de inventario de una biblioteca. Esta aplicación implementa un buscador inteligente, validaciones robustas y está completamente contenedrizada para un despliegue inmediato.
 
 ## 🐳 Imagen Oficial en Docker Hub
-Puedes encontrar la imagen lista para producción aquí:
+La imagen está publicada y lista para ser utilizada en entornos de prueba o producción:
 👉 [henrydev2026/biblioteca-api](https://hub.docker.com/r/henrydev2026/biblioteca-api)
 
-## 🚀 Características
+## 🚀 Características Principales (v2.0)
 
-* **Validaciones Avanzadas**: Títulos y autores permiten letras, espacios y **guiones normales (-)**, rechazando números y caracteres especiales.
-* **Búsqueda Flexible**: Filtros de búsqueda por título y autor con manejo de errores personalizado.
-* **Infraestructura Moderna**: Orquestación completa con Docker y Docker Compose.
-* **Documentación**: Swagger UI integrado para pruebas rápidas de los endpoints.
-* **Calidad**: Suite de pruebas unitarias.
+* **Búsqueda Unificada**: Implementación de un endpoint global `/api/books/search` que filtra simultáneamente por título o autor.
+* **Validaciones**: 
+    * Permite títulos técnicos con números y puntos (ej. *Spring Boot v3.0*).
+    * Bloquea búsquedas compuestas únicamente por números para garantizar la integridad de los resultados.
+* **Persistencia Garantizada**: Configuración de volúmenes de Docker para asegurar que los libros registrados no se pierdan al reiniciar los servicios.
+* **Calidad de Código**: Suite de pruebas unitarias (`JUnit 5`) actualizadas para validar la lógica del buscador.
 
 ## 🛠️ Instalación y Despliegue
 
 ### Requisitos previos
 * Docker y Docker Compose instalados.
 
-### Despliegue rápido con Docker (Recomendado)
-Para levantar la API y la base de datos MySQL automáticamente, ejecuta en la raíz del proyecto:
+### Despliegue rápido con Docker Compose
+El archivo `docker-compose.yml` orquestra automáticamente la API y la base de datos MySQL.
+
+1.  Copia tu archivo `docker-compose.yml` en una carpeta local.
+2.  Ejecuta el siguiente comando en la terminal:
+
 ```bash
 sudo docker-compose up -d
