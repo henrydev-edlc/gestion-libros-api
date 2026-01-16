@@ -34,3 +34,14 @@ El archivo `docker-compose.yml` gestiona automáticamente la configuración de l
    sudo docker-compose up -d
 
 3. **Probar API**: Una vez levantados los contenedores, abre tu navegador en la siguiente dirección para interactuar con la documentación y realizar pruebas de los endpoints: 🔗 http://localhost:8080/swagger-ui.html
+
+**Ejemplo de Uso (Crear un Libro)**
+```bash
+   {
+  "title": "Spring Boot v3.0: Cloud Native",
+  "author": "Josh Long",
+  "isbn": "978-1492076911",
+  "publishYear": 2024,
+  "genre": "Tecnología",
+  "quantity": 15
+}
