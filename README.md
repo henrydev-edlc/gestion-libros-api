@@ -5,7 +5,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
 ![Docker](https://img.shields.io/badge/Docker-Published-blue)
 
-Una API REST profesional construida con **Spring Boot** para la gestión de inventario de una biblioteca. Esta aplicación implementa un buscador inteligente, validaciones robustas y está completamente automatizada mediante contenedores para un despliegue inmediato.
+Una API REST profesional construida con **Spring Boot** para la gestión de inventario de una biblioteca. Esta aplicación implementa un buscador, validaciones robustas y está completamente automatizada mediante contenedores para un despliegue inmediato.
 
 ## 🐳 Imagen Oficial en Docker Hub
 La imagen está publicada y lista para ser utilizada:
