@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.util.HashMap;
@@ -68,14 +69,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);
     }
 
+    // Metodo para cachar excepciones especificas como 404
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<Map<String, String>> handleResponseStatusException(ResponseStatusException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", ex.getReason());
+        return new ResponseEntity<>(error, ex.getStatusCode());
+    }
+
+    // Metodo para atrapar un error no previsto
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleAllExceptions(Exception ex) {
         Map<String, String> errors = new HashMap<>();
-
-        // Alerta cuando el servidor reciba caracteres extraños
-        errors.put("error", "La solicitud contiene caracteres no permitidos o un formato inválido");
-
-        return ResponseEntity.badRequest().body(errors);
+        errors.put("error", "Error interno del servidor o formato inválido");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errors);
     }
 
 }
