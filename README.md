@@ -32,3 +32,5 @@ El archivo `docker-compose.yml` gestiona automáticamente la configuración de l
 2. **Ejecución**: Ejecuta el siguiente comando en la terminal:
    ```bash
    sudo docker-compose up -d
+
+3. **Probar API**: Una vez levantados los contenedores, abre tu navegador en la siguiente dirección para interactuar con la documentación y realizar pruebas de los endpoints: 🔗 http://localhost:8080/swagger-ui.html
